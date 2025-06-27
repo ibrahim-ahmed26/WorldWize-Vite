@@ -1,0 +1,52 @@
+.spinnerContainer {
+  height: 100%;
+  min-height: 150px; /* Prevents collapse on small containers */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ensures full width */
+}
+
+/* Spinner styling */
+.spinner {
+  width: clamp(4rem, 8vw, 5rem); /* Responsive size */
+  height: clamp(4rem, 8vw, 5rem);
+  border-radius: 50%;
+  background: conic-gradient(transparent 10%, var(--color-light--2));
+  -webkit-mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6px),
+    #000 0
+  ); /* Thinner border */
+  mask: radial-gradient(
+    farthest-side,
+    transparent calc(100% - 6px),
+    #000 0
+  ); /* Standard mask for broader support */
+  animation: rotate 1.2s infinite linear; /* Slightly faster for snappier feel */
+}
+
+/* Animation */
+@keyframes rotate {
+  to {
+    transform: rotate(360deg); /* Explicit degrees for clarity */
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .spinner {
+    width: clamp(3rem, 6vw, 4rem); /* Smaller spinner for mobile */
+    height: clamp(3rem, 6vw, 4rem);
+    -webkit-mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - 5px),
+      #000 0
+    );
+    mask: radial-gradient(
+      farthest-side,
+      transparent calc(100% - 5px),
+      #000 0
+    ); /* Thinner border on mobile */
+  }
+}

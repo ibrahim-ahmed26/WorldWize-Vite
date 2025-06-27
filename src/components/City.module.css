@@ -1,0 +1,225 @@
+.city {
+  padding: 2rem 3rem;
+  max-height: 70%;
+  background: linear-gradient(
+    145deg,
+    var(--color-dark--2) 0%,
+    rgba(66, 72, 77, 0.95) 100%
+  );
+  border-radius: 12px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  backdrop-filter: blur(10px);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.city::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(
+      circle at 90% 10%,
+      rgba(255, 181, 69, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 10% 90%,
+      rgba(0, 196, 106, 0.03) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  border-radius: 12px;
+}
+
+/* Custom scrollbar styling */
+.city::-webkit-scrollbar {
+  width: 8px;
+}
+
+.city::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.city::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    135deg,
+    var(--color-brand--1) 0%,
+    var(--color-brand--2) 100%
+  );
+  border-radius: 4px;
+  transition: background 0.3s ease;
+}
+
+.city::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    135deg,
+    var(--color-brand--2) 0%,
+    var(--color-brand--1) 100%
+  );
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem 2rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 181, 69, 0.2);
+}
+
+.city h6 {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--color-light--1);
+  letter-spacing: 0.1rem;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.row:hover .city h6 {
+  color: var(--color-brand--1);
+  opacity: 1;
+}
+
+.city h3 {
+  font-size: 1.9rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-light--2);
+  transition: color 0.3s ease;
+}
+
+.row:hover .city h3 {
+  color: var(--color-brand--1);
+}
+
+.city h3 span {
+  font-size: 3.2rem;
+  line-height: 1;
+  background: linear-gradient(
+    135deg,
+    var(--color-brand--1) 0%,
+    var(--color-brand--2) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transition: transform 0.3s ease;
+}
+
+.row:hover .city h3 span {
+  transform: scale(1.1);
+}
+
+.city p {
+  font-size: 1.6rem;
+  color: var(--color-light--1);
+  line-height: 1.6;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+
+.row:hover .city p {
+  color: var(--color-light--2);
+  opacity: 1;
+}
+
+.city a:link,
+.city a:visited {
+  font-size: 1.6rem;
+  color: var(--color-brand--1);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+}
+
+.city a::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    var(--color-brand--1) 0%,
+    var(--color-brand--2) 100%
+  );
+  transition: width 0.3s ease;
+}
+
+.city a:hover {
+  color: var(--color-brand--2);
+  transform: translateY(-1px);
+}
+
+.city a:hover::after {
+  width: 100%;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .city {
+    padding: 1.5rem 2rem;
+    gap: 1.5rem;
+  }
+
+  .row {
+    padding: 1rem 1.5rem;
+  }
+
+  .city h3 {
+    font-size: 1.6rem;
+    gap: 0.8rem;
+  }
+
+  .city h3 span {
+    font-size: 2.8rem;
+  }
+
+  .city p {
+    font-size: 1.4rem;
+  }
+
+  .city a:link,
+  .city a:visited {
+    font-size: 1.4rem;
+  }
+}

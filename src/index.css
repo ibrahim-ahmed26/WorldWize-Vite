@@ -31,11 +31,26 @@ body {
   color: var(--color-light--2);
   font-weight: 400;
   line-height: 1.6;
+  background: linear-gradient(
+    135deg,
+    var(--color-dark--0) 0%,
+    var(--color-dark--1) 50%,
+    var(--color-dark--2) 100%
+  );
+  min-height: 100vh;
 }
 
 label {
   font-size: 1.6rem;
   font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: var(--color-light--2);
+  display: block;
+  transition: color 0.3s ease;
+}
+
+label:hover {
+  color: var(--color-brand--1);
 }
 
 input,
@@ -45,29 +60,79 @@ textarea {
   font-family: inherit;
   font-size: 1.6rem;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   background-color: var(--color-light--3);
-  transition: all 0.2s;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   outline: none;
   background-color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 196, 106, 0.15);
+  border: 2px solid var(--color-brand--2);
+}
+
+input:hover,
+textarea:hover {
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .cta:link,
 .cta:visited {
   display: inline-block;
-  background-color: var(--color-brand--2);
+  background: linear-gradient(135deg, var(--color-brand--2) 0%, #00d16e 100%);
   color: var(--color-dark--1);
   text-transform: uppercase;
   text-decoration: none;
   font-size: 1.6rem;
   font-weight: 600;
-  padding: 1rem 3rem;
-  border-radius: 5px;
+  padding: 1.2rem 3.5rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 196, 106, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
+.cta:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 196, 106, 0.4);
+  background: linear-gradient(135deg, #00d16e 0%, var(--color-brand--2) 100%);
+}
+
+.cta:active {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(0, 196, 106, 0.3);
+}
+
+.cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.cta:hover::before {
+  left: 100%;
+}
+:global(.leaflet-popup-content),
+.countryList {
+  font-family: "Segoe UI Emoji", "Noto Color Emoji", "Apple Color Emoji",
+    sans-serif;
+}
 /*
 "importCSSModule": {
     "prefix": "csm",
