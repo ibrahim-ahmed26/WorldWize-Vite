@@ -24,7 +24,7 @@ function City() {
   const lat = searchParams.get("lat");
   const lng = searchParams.get("lng");
   return (
-    <div>
+    <div className={styles.city}>
       <h1>city{x.id}</h1>
       <p>
         Position ${lat} , ${lng}

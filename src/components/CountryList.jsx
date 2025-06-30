@@ -1,9 +1,11 @@
+import { useCities } from "../contexts/CitiesContext";
 import CountryItem from "./CountryItem";
 import styles from "./CountryList.module.css";
 import Message from "./Message";
 import Spinner from "./Spinner";
 
-export default function CountryList({ city, isLoading }) {
+export default function CountryList() {
+  const { city, isLoading } = useCities();
   if (isLoading) return <Spinner />;
   if (!city.length) return <Message message={"Add Cities To Your List"} />;
 
