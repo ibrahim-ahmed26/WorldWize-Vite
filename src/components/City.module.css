@@ -1,23 +1,24 @@
 .city {
-  padding: 2rem 3rem;
+  padding: 2.5rem 3rem;
   max-height: 70%;
   background: linear-gradient(
-    145deg,
+    135deg,
     var(--color-dark--2) 0%,
-    rgba(66, 72, 77, 0.95) 100%
+    rgba(66, 72, 77, 0.98) 100%
   );
-  border-radius: 12px;
+  border-radius: 16px;
   overflow-y: auto;
   overflow-x: hidden;
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  gap: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+    0 1px 0 rgba(255, 255, 255, 0.05) inset;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
-  backdrop-filter: blur(10px);
-  animation: fadeInUp 0.6s ease-out;
+  backdrop-filter: blur(12px);
+  animation: fadeInUp 0.5s ease-out;
 }
 
 .city::before {
@@ -27,76 +28,64 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: radial-gradient(
-      circle at 90% 10%,
-      rgba(255, 181, 69, 0.03) 0%,
-      transparent 50%
-    ),
-    radial-gradient(
-      circle at 10% 90%,
-      rgba(0, 196, 106, 0.03) 0%,
-      transparent 50%
-    );
+  background: linear-gradient(
+    135deg,
+    rgba(255, 181, 69, 0.02) 0%,
+    transparent 50%,
+    rgba(0, 196, 106, 0.02) 100%
+  );
   pointer-events: none;
-  border-radius: 12px;
+  border-radius: 16px;
 }
 
-/* Custom scrollbar styling */
 .city::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 .city::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
 }
 
 .city::-webkit-scrollbar-thumb {
-  background: linear-gradient(
-    135deg,
-    var(--color-brand--1) 0%,
-    var(--color-brand--2) 100%
-  );
-  border-radius: 4px;
-  transition: background 0.3s ease;
+  background: var(--color-brand--1);
+  border-radius: 3px;
+  transition: background 0.2s ease;
 }
 
 .city::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(
-    135deg,
-    var(--color-brand--2) 0%,
-    var(--color-brand--1) 100%
-  );
+  background: var(--color-brand--2);
 }
 
 .row {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1.5rem 2rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  transition: all 0.3s ease;
+  gap: 0.75rem;
+  padding: 1.75rem 2rem;
+  background: rgba(255, 255, 255, 0.025);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.25s ease;
   position: relative;
-  z-index: 1;
+  cursor: pointer;
 }
 
 .row:hover {
-  background: rgba(255, 255, 255, 0.05);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-  border-color: rgba(255, 181, 69, 0.2);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-color: rgba(255, 181, 69, 0.15);
 }
 
 .city h6 {
   text-transform: uppercase;
-  font-size: 1.1rem;
-  font-weight: 900;
+  font-size: 1rem;
+  font-weight: 700;
   color: var(--color-light--1);
-  letter-spacing: 0.1rem;
-  opacity: 0.8;
-  transition: all 0.3s ease;
+  letter-spacing: 0.08rem;
+  opacity: 0.7;
+  transition: all 0.25s ease;
+  margin: 0;
 }
 
 .row:hover .city h6 {
@@ -105,20 +94,22 @@
 }
 
 .city h3 {
-  font-size: 1.9rem;
+  font-size: 1.85rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   color: var(--color-light--2);
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
+  margin: 0;
+  font-weight: 600;
 }
 
 .row:hover .city h3 {
   color: var(--color-brand--1);
 }
 
-.city h3 span {
-  font-size: 3.2rem;
+.city h3 span:not([data-emoji="flag"]) {
+  font-size: 3rem;
   line-height: 1;
   background: linear-gradient(
     135deg,
@@ -128,20 +119,31 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
-  transition: transform 0.3s ease;
+  font-weight: 700;
+  transition: transform 0.25s ease;
 }
 
-.row:hover .city h3 span {
-  transform: scale(1.1);
+.city h3 [data-emoji="flag"] {
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji",
+    "Twemoji Mozilla", sans-serif;
+  font-size: 1.2em;
+  display: inline-block;
+  line-height: 1;
+  -webkit-text-fill-color: initial; /* Reset gradient effect */
+  background: none; /* Remove gradient */
+}
+
+.row:hover .city h3 span:not([data-emoji="flag"]) {
+  transform: scale(1.05);
 }
 
 .city p {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--color-light--1);
   line-height: 1.6;
   opacity: 0.9;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
+  margin: 0;
 }
 
 .row:hover .city p {
@@ -151,11 +153,11 @@
 
 .city a:link,
 .city a:visited {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   color: var(--color-brand--1);
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: all 0.25s ease;
   position: relative;
   display: inline-block;
 }
@@ -167,17 +169,12 @@
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(
-    90deg,
-    var(--color-brand--1) 0%,
-    var(--color-brand--2) 100%
-  );
-  transition: width 0.3s ease;
+  background: var(--color-brand--1);
+  transition: width 0.25s ease;
 }
 
 .city a:hover {
   color: var(--color-brand--2);
-  transform: translateY(-1px);
 }
 
 .city a:hover::after {
@@ -187,7 +184,7 @@
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(16px);
   }
   to {
     opacity: 1;
@@ -197,29 +194,39 @@
 
 @media (max-width: 768px) {
   .city {
-    padding: 1.5rem 2rem;
-    gap: 1.5rem;
+    padding: 2rem;
+    gap: 1.25rem;
+    border-radius: 12px;
   }
 
   .row {
-    padding: 1rem 1.5rem;
+    padding: 1.5rem;
+    border-radius: 10px;
   }
 
   .city h3 {
-    font-size: 1.6rem;
+    font-size: 1.65rem;
     gap: 0.8rem;
   }
 
-  .city h3 span {
-    font-size: 2.8rem;
+  .city h3 span:not([data-emoji="flag"]) {
+    font-size: 2.6rem;
+  }
+
+  .city h3 [data-emoji="flag"] {
+    font-size: 1.2em;
   }
 
   .city p {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
   }
 
   .city a:link,
   .city a:visited {
-    font-size: 1.4rem;
+    font-size: 1.35rem;
+  }
+
+  .city h6 {
+    font-size: 0.9rem;
   }
 }
