@@ -12,11 +12,10 @@ import styles from "./Map.module.css";
 import { useEffect, useState } from "react";
 import { useGeoLocation } from "../custom-hooks/GeoLocation";
 import Button from "./Button";
+import { usePostion } from "../custom-hooks/usePosition";
 export default function Map() {
   const { city } = useCities();
-  const [searchParams] = useSearchParams();
-  const mapLat = searchParams.get("lat");
-  const mapLng = searchParams.get("lng");
+  const [mapLat, mapLng] = usePostion();
   const [mapPostion, setMapPostion] = useState([40, 20]);
   const {
     location,
@@ -56,7 +55,15 @@ export default function Map() {
             position={[city.position.lat, city.position.lng]}
           >
             <Popup>
-              <span>{city.cityName}</span> <span>{city.emoji}</span>
+              <span>{city.cityName}</span>{" "}
+              <span>
+                <img
+                  src={city.emoji}
+                  width="15"
+                  style={{ marginRight: "0.5rem", verticalAlign: "middle" }}
+                  alt={`Flag of ${city.cityName}`}
+                />
+              </span>
             </Popup>
             <ChangePostion position={mapPostion} />
             <DetectClick />
@@ -75,7 +82,7 @@ function DetectClick() {
   const navigate = useNavigate();
   useMapEvents({
     click: (e) => {
-      navigate(`form?lat=${e.latlng.lat}&${e.latlng.lng}`);
+      navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`);
     },
   });
 }

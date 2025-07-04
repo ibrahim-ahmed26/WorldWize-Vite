@@ -1,4 +1,4 @@
-import { useParams, useSearchParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import styles from "./City.module.css";
 import { useCities } from "../contexts/CitiesContext";
 import { useEffect } from "react";
@@ -29,7 +29,13 @@ function City() {
       <div className={styles.row}>
         <h6>City name</h6>
         <h3>
-          <span>{emoji}</span> {cityName}
+          <img
+            src={emoji}
+            width="20"
+            style={{ marginRight: "0.5rem", verticalAlign: "middle" }}
+            alt={`Flag of ${cityName}`}
+          />
+          {cityName}
         </h3>
       </div>
 
